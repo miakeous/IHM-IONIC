@@ -8,7 +8,7 @@ import {CardArticleService} from "./cardArticle.service";
 @Component({
   selector: 'cardArticle',
   templateUrl: './cardArticle.page.html',
-  //styleUrls: ['./login.page.scss'],
+  styleUrls: ['./cardArticle.page.scss'],
   host: {'class': 'cardArticle'},
   providers: [CardArticleService]
 })

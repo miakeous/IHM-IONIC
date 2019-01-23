@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button disabled>Home</ion-button>
-    <ion-button (click)="goToPage1()">page 1</ion-button>
+    <ul class="listMenu" >
+      <ion-buttons slot="start">
+        <li><ion-button disabled="true" >Home</ion-button></li>
+        <li><ion-button  (click)="goToPage1()" >Articles</ion-button></li>
+      </ion-buttons>
+    </ul>
   </ion-toolbar></ion-header>
 <ion-content>
   <section >

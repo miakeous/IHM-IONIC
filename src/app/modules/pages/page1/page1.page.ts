@@ -3,6 +3,7 @@ import {Page1Service} from "./page1.service";
 import {Router} from "@angular/router";
 import {CardArticlePage} from "../cardArticle/cardArticle.page";
 import {NavController} from "@ionic/angular";
+import {max} from "rxjs/internal/operators";
 
 @Component({
   selector: 'page1',
@@ -33,14 +34,10 @@ export class Page1Page implements OnInit {
         this.articles = data;
        // this.articles.splice(0,9);
         let resu =[];
-        let taille = 0;
-        for(let e of this.articles){
-          resu.push(e);
-          taille++;
-          if(taille>9){
-            break;
-          }
-        }
+
+        let random = Math.floor(Math.random() * Math.floor(90));
+        let taille = random;
+        resu = this.articles.splice(random,random+9);
         this.articles=resu;
         this.page1Service.persistArticles(this.articles).then(
           ok => {

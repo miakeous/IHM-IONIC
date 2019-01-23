@@ -1,27 +1,39 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-button  (click)="onClick()" >Home</ion-button>
-    <ion-button  disabled >page1</ion-button>
-  </ion-toolbar></ion-header>
+    <ul class="listMenu" >
+      <ion-buttons slot="start">
+      <li><ion-back-button></ion-back-button></li>
+      <li><ion-button (click)="onClick()" >Home</ion-button></li>
+      <li><ion-button  disabled="true" >page1</ion-button></li>
+      </ion-buttons>
+    </ul>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <section >
     <h4>Bienvenue sur la page 1</h4>
   </section>
-
   <h1 *ngIf="toShow">
     Je dois m'afficher
   </h1>
-
   <h1 *ngIf="messageDsiplay">
     On n'a pas acces a internet frérot !!!
   </h1>
-
+  <div class="container">
   <div *ngFor="let article of articles">
-    <div class="container" (click)="onArticleClick(article)">
-    <h3><a>{{article.title}}</a></h3>
-    <p>{{article.body}}</p>
-    <br />
+    <div ngClass="list">
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample{{article.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+        {{article.title}}
+      </a>
+
+      <div class="collapse" id="collapseExample{{article.id}}">
+        <div class="card card-body">
+          {{article.body}}
+          <button type="button" class="btn btn-link" (click)="onArticleClick(article)">voir plus</button>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 

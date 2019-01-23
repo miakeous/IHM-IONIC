@@ -1,16 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button  (click)="onClick('main')" >Home</ion-button>
-    <ion-button  (click)="onClick('page1')" >Articles</ion-button>
+    <ul class="listMenu" >
+      <ion-buttons slot="start">
+        <li><ion-back-button></ion-back-button></li>
+        <li><ion-button (click)="onClick('main')" >Home</ion-button></li>
+        <li><ion-button  (click)="onClick('page1')" >Articles</ion-button></li>
+      </ion-buttons>
+    </ul>
   </ion-toolbar></ion-header>
 <ion-content>
   <section >
-    <h4 ngClass="titre">Détails de l'article {{article.id}}</h4>
+    <h4 ngClass="titre">Détails de l'article "{{article.title}}"</h4>
   </section>
   <div class="container-fluid">
-  <h5>{{article.title}}</h5>
-  <h6>{{article.body}}</h6>
-  <h6>{{article.id}}</h6>
+    <label for="id"> <b>Identifiant : </b> <ion-text id="id">{{article.id}}</ion-text></label>
+    <label for="body"><b>Description : </b><ion-text id="body">{{article.body}}</ion-text></label>
+    <label for="userId"><b>userId : </b><ion-text id="userID">{{article.userId}}</ion-text></label>
   </div>
-
 </ion-content>
