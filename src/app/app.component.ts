@@ -10,7 +10,9 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
 
   constructor(public router:Router) {
-
+// REMOVE NEVCONTROLLER NAV PARMA
+    //finish send data to other page
+    // create bouyton to persitant or not
   }
 
   ngOnInit() {

@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-button  (click)="onClick()" >Home</ion-button>
@@ -17,10 +18,14 @@
   </h1>
 
   <div *ngFor="let article of articles">
-    <h3><a href="">{{article.title}}</a></h3>
+    <div class="container" (click)="onArticleClick(article)">
+    <h3><a>{{article.title}}</a></h3>
     <p>{{article.body}}</p>
     <br />
+    </div>
   </div>
 
 
 </ion-content>
+
+

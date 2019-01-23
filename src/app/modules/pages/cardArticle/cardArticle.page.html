@@ -1,11 +1,16 @@
-
+<ion-header>
+  <ion-toolbar>
+    <ion-button  (click)="onClick('main')" >Home</ion-button>
+    <ion-button  (click)="onClick('page1')" >Articles</ion-button>
+  </ion-toolbar></ion-header>
 <ion-content>
   <section >
-    <h4 ngClass="titre">Bienvenue sur la page de connexion</h4>
+    <h4 ngClass="titre">Détails de l'article {{article.id}}</h4>
   </section>
+  <div class="container-fluid">
   <h5>{{article.title}}</h5>
   <h6>{{article.body}}</h6>
   <h6>{{article.id}}</h6>
-  <h6>{{article.title}}</h6>
+  </div>
 
 </ion-content>

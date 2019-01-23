@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginPageModule} from "../modules/pages/loginPage/login.page.module";
+import {CardArticlePage} from "../modules/pages/cardArticle/cardArticle.page";
 
 const defaultsRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,6 +11,11 @@ const defaultsRoutes: Routes = [
   {
     path: 'page1',
     loadChildren: '../modules/pages/page1/page1.page.module#Page1PageModule'
+  }
+  ,
+  {
+    path: 'article',
+    loadChildren: '../modules/pages/cardArticle/cardArticle.page.module#CardArticlePageModule'
   }
   ,
   {

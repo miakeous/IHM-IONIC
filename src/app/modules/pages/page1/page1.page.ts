@@ -17,7 +17,7 @@ export class Page1Page implements OnInit {
   public articles: Array<any>;
   public messageDsiplay:Boolean ;
   public toShow: boolean;
-  
+
   constructor(public page1Service: Page1Service,public router:Router,public navCtrl:NavController) {
     this.toShow = true;
     this.messageDsiplay=false;
@@ -61,10 +61,7 @@ export class Page1Page implements OnInit {
   }
 
   onArticleClick(article: any) {
-    this.pushPage = CardArticlePage;
-    this.params = { article: article };
-
-
+    this.router.navigateByUrl("article?n="+article.id);
   }
 }
 
