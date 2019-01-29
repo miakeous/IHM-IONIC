@@ -18,10 +18,14 @@
   </h1>
 
   <div *ngFor="let article of articles">
-    <div class="container" (click)="onArticleClick(article)">
-    <h3><a>{{article.title}}</a></h3>
+    <div class="container">
+    <h3 (click)="onArticleClick(article)"><a>{{article.title}}</a></h3>
     <p>{{article.body}}</p>
     <br />
+      <ion-button (click)="article.isPersistant ? delete(article): add(article)">
+        {{(article.isPersistant) ? "Supprimer":"Persister"}}
+
+      </ion-button>
     </div>
   </div>
 

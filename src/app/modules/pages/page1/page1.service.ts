@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
 import {forEach} from "@angular/router/src/utils/collection";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class Page1Service {
@@ -15,8 +16,33 @@ export class Page1Service {
     return this.httpclient.get("https://jsonplaceholder.typicode.com/posts") ;
   }
 
-  persistArticles(articles){
-    return this.storage.set("articles", articles);
+  persistArticles(identifiant : string){
+
+    return new Observable(
+        observer =>{
+          this.storage.get("article"+identifiant).then(article => {
+            let resultat = false;
+            if(article)
+              resultat=true;
+
+            observer.next(resultat);
+
+          });
+        }
+    );
+
+
+
   }
+
+  delete(identifiant: string){
+    this.storage.remove("article"+identifiant);
+  }
+
+  add(identifiant: string, article: string){
+    return this.storage.set("article"+identifiant,article);
+  }
+
+
 
 }
