@@ -10,17 +10,21 @@ ion-header {
 ion-content {
   transform: translate3d(0, 0, 0);
 }
-
-.page1 {
-
-}
-
 .list{
   padding-bottom: 2%;
+}
+.container{
+  text-align: center;
 }
 
 .listMenu li{
   display: inline;
   text-align: center;
   padding: 2px ;
+}
+
+.btn-primary{
+  color: black;
+  background-color: #F2F2F2;
+  border-color: #F2F2F2;
 }

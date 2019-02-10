@@ -4,10 +4,11 @@ import createMockInstance from "jest-create-mock-instance";
 import {Storage} from "@ionic/storage";
 import {of} from "rxjs";
 import {TestUtil} from "../../../test/util.test";
+import {ParticlesService} from "./particles.service";
 
 
 describe('Service: Page Service', () => {
-  let service: Page1Service;
+  let service: ParticlesService;
   let httpClient: HttpClient = createMockInstance(HttpClient);
   let storage: Storage = createMockInstance(Storage);
 
@@ -19,13 +20,10 @@ describe('Service: Page Service', () => {
   beforeEach(()=> {
       httpClient = createMockInstance(HttpClient);
       storage = createMockInstance(Storage);
-      service = new Page1Service(httpClient, storage);
+      service = new ParticlesService(httpClient, storage);
 
       spyOn(service, "getArticles").and.returnValue(of(mock));
-      spyOn(service, "persistArticles").and.returnValue(TestUtil.promise(true));
 
-      spyOn(httpClient, "get").and.returnValue(of(mock));
-      spyOn(storage, "set").and.returnValue(of(TestUtil.promise(true)));
 
 
     }
@@ -43,15 +41,4 @@ describe('Service: Page Service', () => {
     );
   });
 
-  it('should persistArticles', (done) => {
-    service.persistArticles(mock).then(
-      data => {
-        expect(data).toEqual(true);
-        done();
-      },
-      error =>{
-        fail(error);
-      }
-    );
-  });
 });
