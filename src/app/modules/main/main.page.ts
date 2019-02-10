@@ -11,16 +11,19 @@ import { Router } from "@angular/router";
 export class MainPage implements OnInit {
 
   public identifiant: string;
+   route: string;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+    this.route = "main";
+  }
 
   ngOnInit() {
     console.log("INIT MAIN PAGE");
     this.identifiant = localStorage.getItem("identifiant");
   }
 
-  goToPage1(){
-    this.router.navigateByUrl("page1");
+  onClick(route: string){
+    this.router.navigateByUrl(route);
   }
 }
 

@@ -2,11 +2,15 @@
   <ion-toolbar>
     <ul class="listMenu" >
       <ion-buttons slot="start">
-        <li><ion-button disabled="true" >Home</ion-button></li>
-        <li><ion-button  (click)="goToPage1()" >Articles</ion-button></li>
+        <li><ion-back-button *ngIf="this.actualRoute != 'main'"></ion-back-button></li>
+        <li><ion-button (click)="onClick('main')" disabled="this.actualRoute == 'main" >Home</ion-button></li>
+        <li><ion-button  (click)="onClick('page1')"  >Articles</ion-button></li>
+        <li><ion-button  (click)="onClick('particles')"  >Articles Persistés</ion-button></li>
       </ion-buttons>
     </ul>
-  </ion-toolbar></ion-header>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <section >
     <h4>Bienvenue sur la main page {{identifiant}}</h4>

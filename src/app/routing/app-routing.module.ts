@@ -19,6 +19,10 @@ const defaultsRoutes: Routes = [
   }
   ,
   {
+    path: 'particles',
+    loadChildren: '../modules/pages/PArticles/particles.page.module#ParticlesPageModule'
+  },
+  {
     path: 'login',
     loadChildren: '../modules/pages/loginPage/login.page.module#LoginPageModule'
   }

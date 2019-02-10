@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {Page1Page} from "./page1.page";
+
 import {CommonModule} from "@angular/common";
 import {IonicModule,NavController} from "@ionic/angular";
 import {Request, RequestMethod, RequestOptions} from '@angular/http';
+import {ParticlesPage} from "./particles.page";
 @NgModule({
   imports: [
     CommonModule,
@@ -11,12 +12,12 @@ import {Request, RequestMethod, RequestOptions} from '@angular/http';
     RouterModule.forChild([
       {
         path: '',
-        component: Page1Page
+        component: ParticlesPage
       }
     ])
   ],
-  bootstrap: [Page1Page],
-  declarations: [Page1Page]
+  bootstrap: [ParticlesPage],
+  declarations: [ParticlesPage]
 })
-export class Page1PageModule {
+export class ParticlesPageModule {
 }

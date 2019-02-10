@@ -18,10 +18,12 @@ export class Page1Page implements OnInit {
   public articles: Array<any>;
   public messageDsiplay:Boolean ;
   public toShow: boolean;
+  private route: string;
 
-  constructor(public page1Service: Page1Service,public router:Router,public navCtrl:NavController) {
+  constructor(public page1Service: Page1Service, public router: Router) {
     this.toShow = true;
     this.messageDsiplay=false;
+    this.route = "page1";
 
   }
 
@@ -32,18 +34,20 @@ export class Page1Page implements OnInit {
     this.page1Service.getArticles().subscribe(
       (data: Array<any>) => {
         this.articles = data;
-       // this.articles.splice(0,9);
         let resu =[];
-
         let random = Math.floor(Math.random() * Math.floor(90));
-        let taille = random;
-        resu = this.articles.splice(random,random+9);
+        resu = this.articles.splice(random,9);
+        console.log(resu.length);
+        console.log(random);
+        console.log(random + 9);
         this.articles=resu;
-        this.page1Service.persistArticles(this.articles).then(
-          ok => {
-            console.log("Les articles ont bien été stockés");
-          }
-        );
+        console.log(this.articles.length);
+        for(let article of this.articles){
+          this.persitence(article);
+          article.isPersistant =false;
+         // console.log(article);
+        }
+
       },
       error2 => {
        this.page1Service.storage.get('articles').then((data)=>{this.articles=data});
@@ -53,12 +57,34 @@ export class Page1Page implements OnInit {
     );
   }
 
-  onClick(){
-    this.router.navigateByUrl("main");
+  onClick(route:string){
+    this.router.navigateByUrl(route);
   }
 
   onArticleClick(article: any) {
     this.router.navigateByUrl("article?n="+article.id);
+  }
+  delete(article: any) {
+    article.isPersistant = false;
+    this.page1Service.delete(article.id);
+
+  }
+
+  persitence(article: any) {
+
+    this.page1Service.persistArticles(article.id).subscribe(
+      resultat => {
+        //this.articles[article.id].push({'isPersistant' : resultat});
+        article.isPersistant = resultat;
+      }
+    );
+  }
+  add(article: any){
+
+    this.page1Service.add(article.id,article).then(ok=> article.isPersistant=true);
+
+
+
   }
 }
 
